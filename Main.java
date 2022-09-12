@@ -1,101 +1,62 @@
-package com.company;
-
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
-
 public class Main {
-    static void createDeck( ArrayList<Integer> fdeck){
-        for(int k=0; k<4; k++){
-            for (int i=1; i<=9; i++){
-           fdeck.add(i);
-       }
-       for(int i=0; i<4; i++){
-           fdeck.add(10);
-       }
-     }
-    }
-    static void shuffleDeck(ArrayList<Integer> fdeck){
-        Random gen = new Random();
-        for(int i=0; i< fdeck.size()-1; i++){
-            int randomIndex = gen.nextInt(fdeck.size()-(i+1))+(i+1);
-            int temp = fdeck.get(i);
-            fdeck.set(i,fdeck.get(randomIndex));
-            fdeck.set(randomIndex, temp);
-        }
-    }
-    static void  playerTurn(ArrayList<Integer> fdeck, ArrayList<Integer> fplayer){
-        // игрок по желанию берет карты из колоды
-        Scanner in= new Scanner(System.in);
-        int answer = 1;
-        do {
-           playerTakeOneCard(fdeck, fplayer);
-            //подсчитать сколько у игрока очков и выдать результат
-            int playerScore = calcScore(fplayer);
-            System.out.println();
-            if(playerScore >=21) break;
-            else{
-                System.out.println();
-                answer = in.nextInt();
+      public static void main(String[] args) {
+       //Matrix 20.Дана матрица размера M × N. Для каждого столбца матрицы найти произведение его элементов.
+        /*private static final int M = 5;
+        private static final int N = 4;
+        int[][] a = getMatrix();
+        printMatrix(a);
+        int[] products = getProducts(a);
+        System.out.println(Arrays.toString(products));
+        private static int[][] getMatrix() {
+            int[][] a = new int[N][M];
+            for (int i = 0; i < N; i++) {
+                a[i] = ThreadLocalRandom.current().ints(5, 1, 3).toArray();
             }
-            System.out.println("У вас " + playerScore + "очков");
-            if (playerScore >=21) break;
-            System.out.println("Хотите ли взять еще одну карту? 1 - да, любая цифра - нет");
-            answer = in.nextInt();
-        }while(answer == 1);
-    }
-    static void playerTakeOneCard(ArrayList<Integer> fdeck, ArrayList<Integer> fplayer){
-        //взять карту из колоды
-        int card = fdeck.get(fdeck.size() - 1);
-        //удалить карту из колоды
-        fdeck.remove(fdeck.size() - 1);
-        //добавить эту карту игроку
-        fplayer.add(card);
-    }
-    static int calcScore(ArrayList<Integer> fplayer){
-        int sum = 0;
-        for(int i=0; i<fplayer.size(); i++) {
-            sum += fplayer.get(i);
+            return a;
         }
-        return sum;
-    }
+        private static void printMatrix(int[][] a) {
+            for (int i = 0; i < N; i++) {
+                System.out.println(Arrays.toString(a[i]));
+            }
+        }
 
-    public static void main(String[] args) {
-        // создать новую колоду.
-        final int deckSize = 52;
-        ArrayList<Integer> deck = new ArrayList<>();
-        createDeck(deck);
-        // перетасовать колоду.
-        shuffleDeck(deck);
-        // создать игроков
-        ArrayList<Integer> player = new ArrayList<>();
-        // создать дилера
-        ArrayList<Integer> dealer = new ArrayList<>();
-        // ========действие игрока========
-        playerTurn(deck, player);
-        //проверка результатов действий игрока
-        //1. Игрок набрал 21 очко, игра заканчивается, игрок победил
-        if (calcScore(player) == 21){
-            System.out.println("Игрок выиграл. Конец игры. Поздравляем победителя");
-            return;
-        }
-        //2. Игрок набрал меньше 21 очка, игрок сказал хватит.
-        if (calcScore(player) < 21){
-            System.out.println("Игрок Проиграл. Конец игры. Удачи в следующий раз");
-            return;
-        }
-        //3. Игрок набрал больше 21 очка, игра заканчивается, игрок проиграл.
-        if (calcScore(player) > 21){
-            System.out.println("Игрок проиграл. Конец игры. Удачи в следующий раз");
-            return;
-        }
-        // ======== проверка результатов действий дилера========
-        //1. Дилер набрал 21 очко(у игрока заведомо <21) , игра заканчивается, Дилер победил
-        //2. Дилер набрал меньше 21 очка, игрок сказал хватит.
-        //3. Дилер набрал больше 21 очка, игра заканчивается, Дилер проиграл.
-        //3.1. У игрока больше очков, чем у дилера - выиграл игрок.
-        //3.2. У Дилера больше очков, чем у дилера - выиграл Дилер.
-        //3.3. У обоих поровну очков - ничья.
+        private static int[] getProducts(int[][] a) {
+            return Arrays.stream(a).mapToInt(line -> Arrays.stream(line).reduce(1, (x, y) -> x * y)).toArray();
+        }*/
+        //Matrix 21.Дана матрица размера M × N. Для каждой строки матрицы с нечетным номером (1, 3, …) найти среднее арифметическое ее элементов. Условный оператор не использовать.
+           /*public class Test {
+              public static void main(String[] args) {
+                  int [] mas1 = new int[5];
+                  int [] mas2 = new int[5];
 
+                  for (int i = 0; i < 5; i++) {
+                      mas1[i] = (int)(Math.random()*6);
+                      mas2[i] = (int)(Math.random()*6);
+                  }
+                  System.out.println(Arrays.toString(mas1));
+                  System.out.println(Arrays.toString(mas2));
+
+                  double average1 = 0;
+                  double average2 = 0;
+
+                  for (int i = 0; i < 5; i++) {
+                      average1 += mas1[i];
+                      average2 += mas2[i];
+                  }
+                  average1/=5;
+                  average2/=5;
+
+                  if(average1 > average1){
+                      System.out.println("Среднее арифметическое первого массива ("+average1+") больше среднего арифметического "+
+                              "второго массива ("+average2+")");
+                  } else if(average1 < average2){
+                      System.out.println("Среднее арифметическое первого массива ("+average1+") меньше среднего арифметического "+
+                              "второго массива ("+average2+")");
+                  } else {
+                      System.out.println("Средние арифметические массивов равны ("+average1+")");
+                  }
+              }
+          }*/
     }
 }
+
