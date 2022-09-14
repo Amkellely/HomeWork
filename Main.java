@@ -29,7 +29,7 @@ public class Main {
     public void main(String[] args) {
         // Matrix 20. Дана матрица размера M × N. Для каждого столбца матрицы найти
         // произведение его элементов.
-        final int n = 4;
+       /* final int n = 4;
         final int m = 5;
         int[][] mas = new int[n][m];
         fillMatrix(mas);
@@ -41,11 +41,11 @@ public class Main {
         // Matrix 21.. Дана матрица размера M × N.
         // Для каждой строки матрицы с нечетным номером (1, 3, . . .) найти среднее арифметическое ее элементов.
         //Условный оператор не использовать.
-        int num [] = {5, 8, 12, -18, -54, 84, -35, 17, 37};
+        int num [] = {num.length};
         double sum = 0;
         for (int x: num) {
             sum += x;
         }
-        System.out.print("среднее арифметическое чисел равно: " + sum/num.length);
+        System.out.print("среднее арифметическое чисел равно: " + sum/num.length);*/
     }
 }
