@@ -8,10 +8,6 @@ public abstract class Hand {
     Hand(){
         hand = new ArrayList<>();
     }
-    public void takeCard(Deck deck){
-        hand.add(deck.sendCard());
-    }
-
     public String toString(){
         String res = "";
         for(int i = 0; i < hand.size(); i++){
@@ -27,5 +23,8 @@ public abstract class Hand {
         }
         return score;
     }
-    public abstract void play();
+    public abstract void play(Deck deck) throws InterruptedException;
+    public void takeOneCard(Deck deck){
+        hand.add(deck.sendCard());
+    }
 }
